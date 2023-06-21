@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #77f882, #6ae9ff);
+  padding: 10px;
+}
+
+.todo-main {
+  width: 100%;
+  max-width: 540px;
+  background: white;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 25px rgb(97, 96, 96);
+}
+.todo-main h2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: rgb(53, 61, 54);
+  font-weight: bold;
+}
+.todo-main i {
+  width: 30px;
+  margin-left: 10px;
+}
+.todo-main .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(231, 229, 229);
+  border-radius: 20px;
+  padding-left: 30px;
+  margin-bottom: 25px;
+}
+.todo-main #input-box {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 14px;
+}
+.todo-main .add-task {
+  padding: 16px 50px;
+  background: rgb(125, 230, 142);
+  color: rgb(53, 61, 54);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.todo-main .add-task:hover {
+  background: rgb(105, 190, 119);
+  color: white;
+  font-weight: bold;
+}
+.todo-main ul li {
+  position: relative;
+  padding: 12px 8px 12px 50px;
+  list-style: none;
+  font-size: 13px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.todo-main ul li #task-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  left: 8px;
+}/*# sourceMappingURL=main.css.map */
