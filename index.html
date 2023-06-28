@@ -19,15 +19,20 @@
             <button class="add-task" id="add-button">add</button>
         </div>
         <ul id="list-container">
-            <li><input type="checkbox" id="task-circle">Task</li>
-            <li><input type="checkbox" id="task-circle">Task</li>
-            <li><input type="checkbox" id="task-circle">Task</li>
-            <li><input type="checkbox" id="task-circle">Task</li>
+            <li class="checked"><input type="checkbox" id="task-circle">Task1<i id="trash-bin" class="fa-solid fa-trash"
+                    onclick="remove(this)"></i></li>
+            <li class="checked"><input type="checkbox" id="task-circle">Task2<i id="trash-bin" class="fa-solid fa-trash"
+                    onclick="remove(this)"></i></li>
+            <li class="checked"><input type="checkbox" id="task-circle">Task3<i id="trash-bin" class="fa-solid fa-trash"
+                    onclick="remove(this)"></i></li>
+            <li class="checked"><input type="checkbox" id="task-circle">Task4<i id="trash-bin" class="fa-solid fa-trash"
+                    onclick="remove(this)"></i></li>
         </ul>
     </div>
 </div>
+
 <body>
-<script src="./app.js"></script>
+    <script src="./app.js"></script>
 </body>
 
 </html>
