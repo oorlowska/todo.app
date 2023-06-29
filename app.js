@@ -1,11 +1,12 @@
 const todoList = document.getElementById('list-container');
 const addButton = document.getElementById('add-button');
-const deleteTask = document.getElementById('trash-bin');
 const listInput = document.getElementById('input-box');
+let elementId = 5;
 
 const addNewTask = function () {
 	const newTaskFormInput = document.getElementById('input-box').value;
 	const listElement = document.createElement('li');
+	listElement.id = 'list-element';
 	const checkbox = document.createElement('input');
 	checkbox.type = 'checkbox';
 	checkbox.id = 'task-circle';
@@ -14,9 +15,9 @@ const addNewTask = function () {
 	paragraph.id = 'task-name';
 	paragraph.addEventListener('dblclick', editTask);
 	const removeItem = document.createElement('i');
-	removeItem.id = 'trash-bin';
-	removeItem.classList = 'fa-solid fa-trash';
-	removeItem.onclick = remove;
+	removeItem.id = `trash-bin-${elementId}`;
+	removeItem.classList = 'fa-solid fa-trash remove-icon';
+	removeItem.setAttribute('onclick', `remove(id)`);
 
 	paragraph.appendChild(taskName);
 	listElement.appendChild(checkbox);
@@ -27,11 +28,8 @@ const addNewTask = function () {
 
 	console.log(newTaskFormInput);
 	listInput.value = '';
+	elementId++;
 };
-
-function remove(e) {
-	e.parentElement.remove(e);
-}
 
 const editTask = function () {
 	var val = this.innerHTML;
@@ -76,5 +74,13 @@ todoList.addEventListener('click', function (event) {
 		}
 	}
 });
+
+const remove = function (id) {
+	document.querySelectorAll('.remove-icon').forEach((item) => {
+		if (item.id === id) {
+			item.parentElement.remove(item);
+		}
+	});
+};
 
 addButton.addEventListener('click', addNewTask);
