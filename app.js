@@ -1,6 +1,7 @@
 const todoList = document.getElementById('list-container');
 const addButton = document.getElementById('add-button');
 const deleteTask = document.getElementById('trash-bin');
+const listInput = document.getElementById('input-box');
 
 const addNewTask = function () {
 	const newTaskFormInput = document.getElementById('input-box').value;
@@ -25,11 +26,13 @@ const addNewTask = function () {
 	todoList.appendChild(listElement);
 
 	console.log(newTaskFormInput);
+	listInput.value = '';
 };
 
 function remove(e) {
 	e.parentElement.remove(e);
 }
+
 const editTask = function () {
 	var val = this.innerHTML;
 	var input = document.createElement('input');
@@ -47,5 +50,31 @@ document.querySelectorAll('#task-name').forEach(function (node) {
 	node.ondblclick = editTask;
 });
 
+var taskCheckbox = document.querySelectorAll('input[type="checkbox"]');
+
+taskCheckbox.forEach(function (checkbox) {
+	checkbox.addEventListener('click', function () {
+		if (checkbox.checked) {
+			var listItem = checkbox.parentNode;
+			listItem.classList.add('checked');
+		} else {
+			var listItem = checkbox.parentNode;
+			listItem.classList.remove('checked');
+		}
+	});
+});
+
+todoList.addEventListener('click', function (event) {
+	if (event.target && event.target.matches('input[type="checkbox"]')) {
+		var checkbox = event.target;
+		if (checkbox.checked) {
+			var listItem = checkbox.parentNode;
+			listItem.classList.add('checked');
+		} else {
+			var listItem = checkbox.parentNode;
+			listItem.classList.remove('checked');
+		}
+	}
+});
+
 addButton.addEventListener('click', addNewTask);
-// deleteTask.addEventListener('click', removeTask);

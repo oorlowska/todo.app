@@ -92,4 +92,8 @@
 }
 .todo-main ul li .fa-trash:hover {
   color: red;
+}
+.todo-main .checked {
+  color: grey;
+  text-decoration: line-through;
 }/*# sourceMappingURL=main.css.map */
