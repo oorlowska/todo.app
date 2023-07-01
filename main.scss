@@ -16,10 +16,10 @@
 
 .todo-main {
 	width: 100%;
-	max-width: 540px;
+	max-width: 35rem;
 	background: $main-window;
 	margin: 100px auto 20px;
-	padding: 40px 30px 70px;
+	padding: 40px 30px 50px;
 	border-radius: 10px;
 	box-shadow: 10px 10px 25px rgb(97, 96, 96);
 
@@ -61,17 +61,17 @@
 		background: $add-task-button;
 		color: $app-name-text;
 		font-size: 14px;
-        font-weight: bold;
+		font-weight: bold;
 		letter-spacing: 0.5px;
 		border: none;
 		outline: none;
 		border-radius: 40px;
 		cursor: pointer;
-        transition: 0.3s;
+		transition: 0.3s;
 	}
 
 	.add-task:hover {
-        background: $add-task-hover;
+		background: $add-task-hover;
 		color: $main-window;
 		font-weight: bold;
 	}
@@ -80,7 +80,7 @@
 		position: relative;
 		padding: 12px 8px 12px 50px;
 		list-style: none;
-		font-size: 15px;
+		font-size: 14px;
 		user-select: none;
 		cursor: pointer;
 
@@ -106,5 +106,24 @@
 	.checked {
 		color: grey;
 		text-decoration: line-through;
+	}
+}
+
+.status-buttons {
+	margin-top: 2rem;
+	text-align:center;
+
+	button {
+		margin: 0 1.2rem;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid #CCCCCC;
+		border-radius: 15px;
+		background-color: $buttons;
+		font-size: 13px;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: $buttons-hover;
 	}
 }

@@ -2,6 +2,13 @@ const todoList = document.getElementById('list-container');
 const addButton = document.getElementById('add-button');
 const listInput = document.getElementById('input-box');
 let elementId = 5;
+const completedTasksButton = document.querySelector('.completed-tasks');
+const activeTasksButton = document.querySelector('.active-tasks');
+const showAllTasksButton = document.querySelector('.all-tasks');
+const clearTasksButton = document.querySelector('.clear-tasks');
+const checkbox = document.querySelectorAll(
+	'#list-container input[type="checkbox"]'
+);
 
 const addNewTask = function () {
 	const newTaskFormInput = document.getElementById('input-box').value;
@@ -75,6 +82,44 @@ todoList.addEventListener('click', function (event) {
 	}
 });
 
+function showCompleted() {
+	const listElement = document.querySelectorAll('li');
+	listElement.forEach((task) => {
+		if (task.classList.contains('checked')) {
+			task.style.display = 'block';
+		} else {
+			task.style.display = 'none';
+		}
+	});
+}
+
+function showActive() {
+	const listElement = document.querySelectorAll('li');
+	listElement.forEach((task) => {
+		if (task.classList.contains('checked')) {
+			task.style.display = 'none';
+		} else {
+			task.style.display = 'block';
+		}
+	});
+}
+
+function showAll() {
+	const listElement = document.querySelectorAll('li');
+	listElement.forEach((task) => {
+		task.style.display = 'block';
+	});
+}
+
+function clearCompleted() {
+	const listElement = document.querySelectorAll('li');
+	listElement.forEach((task) => {
+		if (task.classList.contains('checked')) {
+			task.remove();
+		}
+	});
+}
+
 const remove = function (id) {
 	document.querySelectorAll('.remove-icon').forEach((item) => {
 		if (item.id === id) {
@@ -84,3 +129,7 @@ const remove = function (id) {
 };
 
 addButton.addEventListener('click', addNewTask);
+completedTasksButton.addEventListener('click', showCompleted);
+activeTasksButton.addEventListener('click', showActive);
+showAllTasksButton.addEventListener('click', showAll);
+clearTasksButton.addEventListener('click', clearCompleted);
