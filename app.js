@@ -9,6 +9,9 @@ const clearTasksButton = document.querySelector('.clear-tasks');
 const checkbox = document.querySelectorAll(
 	'#list-container input[type="checkbox"]'
 );
+const inputBox = document.getElementById('input-box');
+const inputAddButton = document.getElementById('add-button');
+const inputList = document.querySelectorAll('li');
 
 const addNewTask = function () {
 	const newTaskFormInput = document.getElementById('input-box').value;
@@ -112,19 +115,72 @@ function showAll() {
 }
 
 function clearCompleted() {
+	let newTasks = [];
 	const listElement = document.querySelectorAll('li');
 	listElement.forEach((task) => {
 		if (task.classList.contains('checked')) {
 			task.remove();
+		} else {
+			newTasks.push(task.outerText);
 		}
 	});
+
+	localStorage.setItem('tasks', JSON.stringify(newTasks));
 }
 
 const remove = function (id) {
+	let tasks = [];
+	let newTasks = [];
+	tasks = JSON.parse(localStorage.getItem('tasks'));
 	document.querySelectorAll('.remove-icon').forEach((item) => {
 		if (item.id === id) {
 			item.parentElement.remove(item);
+			newTasks = tasks.filter(
+				(val) => val !== item.parentNode.children[1].outerText
+			);
 		}
+	});
+
+	localStorage.setItem('tasks', JSON.stringify(newTasks));
+};
+
+inputAddButton.addEventListener('click', function () {
+	let tasks = [];
+	tasks = JSON.parse(localStorage.getItem('tasks'));
+	tasks.push(inputBox.value);
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+});
+
+const getLocalStorage = function () {
+	let tasks = [];
+	tasks = JSON.parse(localStorage.getItem('tasks'));
+
+	tasks.forEach((task) => {
+		const newTaskFormInput = task;
+		const listElement = document.createElement('li');
+		listElement.id = 'list-element';
+		const checkbox = document.createElement('input');
+		checkbox.type = 'checkbox';
+		checkbox.id = 'task-circle';
+		const taskName = document.createTextNode(newTaskFormInput);
+		const paragraph = document.createElement('span');
+		paragraph.id = 'task-name';
+		paragraph.addEventListener('dblclick', editTask);
+		const removeItem = document.createElement('i');
+		removeItem.id = `trash-bin-${elementId}`;
+		removeItem.classList = 'fa-solid fa-trash remove-icon';
+		removeItem.setAttribute('onclick', `remove(id)`);
+
+		paragraph.appendChild(taskName);
+		listElement.appendChild(checkbox);
+		listElement.appendChild(paragraph);
+		listElement.appendChild(removeItem);
+
+		todoList.appendChild(listElement);
+
+		console.log(newTaskFormInput);
+		listInput.value = '';
+		elementId++;
 	});
 };
 
@@ -133,3 +189,5 @@ completedTasksButton.addEventListener('click', showCompleted);
 activeTasksButton.addEventListener('click', showActive);
 showAllTasksButton.addEventListener('click', showAll);
 clearTasksButton.addEventListener('click', clearCompleted);
+
+getLocalStorage();
