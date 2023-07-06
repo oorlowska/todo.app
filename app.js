@@ -1,7 +1,7 @@
 const todoList = document.getElementById('list-container');
 const addButton = document.getElementById('add-button');
 const listInput = document.getElementById('input-box');
-let elementId = 5;
+let elementId = 1;
 const completedTasksButton = document.querySelector('.completed-tasks');
 const activeTasksButton = document.querySelector('.active-tasks');
 const showAllTasksButton = document.querySelector('.all-tasks');
@@ -10,35 +10,24 @@ const checkbox = document.querySelectorAll(
 	'#list-container input[type="checkbox"]'
 );
 const inputBox = document.getElementById('input-box');
-const inputAddButton = document.getElementById('add-button');
-const inputList = document.querySelectorAll('li');
 
 const addNewTask = function () {
 	const newTaskFormInput = document.getElementById('input-box').value;
-	const listElement = document.createElement('li');
-	listElement.id = 'list-element';
-	const checkbox = document.createElement('input');
-	checkbox.type = 'checkbox';
-	checkbox.id = 'task-circle';
-	const taskName = document.createTextNode(newTaskFormInput);
-	const paragraph = document.createElement('span');
-	paragraph.id = 'task-name';
-	paragraph.addEventListener('dblclick', editTask);
-	const removeItem = document.createElement('i');
-	removeItem.id = `trash-bin-${elementId}`;
-	removeItem.classList = 'fa-solid fa-trash remove-icon';
-	removeItem.setAttribute('onclick', `remove(id)`);
+	const taskTemplate = document.getElementById('task-template');
+	const taskElement = document.importNode(taskTemplate.content, true);
+	taskElement.children[0].children[2].id = `trash-bin-${elementId}`;
+	elementId++;
+	const taskName = taskElement.querySelector('#task-name');
 
-	paragraph.appendChild(taskName);
-	listElement.appendChild(checkbox);
-	listElement.appendChild(paragraph);
-	listElement.appendChild(removeItem);
+	taskName.textContent = newTaskFormInput;
+	todoList.appendChild(taskElement);
 
-	todoList.appendChild(listElement);
+	let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+	tasks.push(newTaskFormInput);
+	localStorage.setItem('tasks', JSON.stringify(tasks));
 
 	console.log(newTaskFormInput);
 	listInput.value = '';
-	elementId++;
 };
 
 const editTask = function () {
@@ -144,43 +133,17 @@ const remove = function (id) {
 	localStorage.setItem('tasks', JSON.stringify(newTasks));
 };
 
-inputAddButton.addEventListener('click', function () {
-	let tasks = [];
-	tasks = JSON.parse(localStorage.getItem('tasks'));
-	tasks.push(inputBox.value);
-	localStorage.setItem('tasks', JSON.stringify(tasks));
-});
-
 const getLocalStorage = function () {
-	let tasks = [];
-	tasks = JSON.parse(localStorage.getItem('tasks'));
+	let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 	tasks.forEach((task) => {
-		const newTaskFormInput = task;
-		const listElement = document.createElement('li');
-		listElement.id = 'list-element';
-		const checkbox = document.createElement('input');
-		checkbox.type = 'checkbox';
-		checkbox.id = 'task-circle';
-		const taskName = document.createTextNode(newTaskFormInput);
-		const paragraph = document.createElement('span');
-		paragraph.id = 'task-name';
-		paragraph.addEventListener('dblclick', editTask);
-		const removeItem = document.createElement('i');
-		removeItem.id = `trash-bin-${elementId}`;
-		removeItem.classList = 'fa-solid fa-trash remove-icon';
-		removeItem.setAttribute('onclick', `remove(id)`);
-
-		paragraph.appendChild(taskName);
-		listElement.appendChild(checkbox);
-		listElement.appendChild(paragraph);
-		listElement.appendChild(removeItem);
-
-		todoList.appendChild(listElement);
-
-		console.log(newTaskFormInput);
-		listInput.value = '';
+		const taskTemplate = document.getElementById('task-template');
+		const taskElement = document.importNode(taskTemplate.content, true);
+		taskElement.children[0].children[2].id = `trash-bin-${elementId}`;
 		elementId++;
+		const taskName = taskElement.querySelector('#task-name');
+		taskName.textContent = task;
+		todoList.appendChild(taskElement);
 	});
 };
 
@@ -189,5 +152,10 @@ completedTasksButton.addEventListener('click', showCompleted);
 activeTasksButton.addEventListener('click', showActive);
 showAllTasksButton.addEventListener('click', showAll);
 clearTasksButton.addEventListener('click', clearCompleted);
+inputBox.addEventListener('keydown', function (event) {
+	if (event.key === 'Enter') {
+		addNewTask();
+	}
+});
 
 getLocalStorage();

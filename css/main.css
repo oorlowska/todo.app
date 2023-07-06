@@ -9,29 +9,29 @@
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(135deg, #77f882, #6ae9ff);
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 .todo-main {
   width: 100%;
   max-width: 35rem;
   background: white;
-  margin: 100px auto 20px;
-  padding: 40px 30px 50px;
+  margin: 6.25rem auto 1.25rem;
+  padding: 2.5rem 1.875rem 3.125rem;
   border-radius: 10px;
   box-shadow: 10px 10px 25px rgb(97, 96, 96);
 }
 .todo-main h2 {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: rgb(53, 61, 54);
   font-weight: bold;
 }
 .todo-main i {
   width: 1.875rem;
   margin-left: 1.5rem;
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 .todo-main .row {
   display: flex;
@@ -39,24 +39,24 @@
   justify-content: space-between;
   background: rgb(231, 229, 229);
   border-radius: 20px;
-  padding-left: 30px;
-  margin-bottom: 25px;
+  padding-left: 1.875rem;
+  margin-bottom: 1.563rem;
 }
 .todo-main #input-box {
   flex: 1;
   border: none;
   outline: none;
   background: transparent;
-  padding: 10px;
-  font-size: 14px;
+  padding: 0.625rem;
+  font-size: 0.875rem;
 }
 .todo-main .add-task {
-  padding: 16px 50px;
+  padding: 1rem 3.125rem;
   background: rgb(125, 230, 142);
   color: rgb(53, 61, 54);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: bold;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.031rem;
   border: none;
   outline: none;
   border-radius: 40px;
@@ -70,9 +70,9 @@
 }
 .todo-main ul li {
   position: relative;
-  padding: 12px 8px 12px 50px;
+  padding: 0.75rem 0.5rem 0.75rem 3.125rem;
   list-style: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -87,7 +87,7 @@
 }
 .todo-main ul li .fa-trash {
   position: absolute;
-  font-size: 14px;
+  font-size: 0.875rem;
   right: 1rem;
 }
 .todo-main ul li .fa-trash:hover {
@@ -105,10 +105,10 @@
 .status-buttons button {
   margin: 0 1.2rem;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #CCCCCC;
+  border: 0.063rem solid #cccccc;
   border-radius: 15px;
   background-color: rgb(245, 244, 244);
-  font-size: 13px;
+  font-size: 0.813rem;
   cursor: pointer;
 }
 .status-buttons button:hover {
