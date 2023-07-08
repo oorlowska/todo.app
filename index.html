@@ -2,40 +2,42 @@
 <html lang="pl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/ad46441fd9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/main.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Todo App</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/ad46441fd9.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./css/main.css" />
 </head>
 <div class="container">
-    <div class="todo-main" id="app-form">
-        <h2>Todo.App<i class="fa-sharp fa-solid fa-list-check"></i></h2>
-        <div class="row">
-            <input type="text" id="input-box" placeholder="Type your task here...">
-            <button class="add-task" id="add-button">add</button>
-        </div>
-        <ul id="list-container">
-            <!-- <li id="list-element">
-                <input type="checkbox" id="task-circle">
-                <span id="task-name">Task1</span>
-                <i id="trash-bin-1" class="fa-solid fa-trash remove-icon" onclick="remove(id)"></i>
-            </li> -->
-        </ul>
-        <div class="status-buttons">
-            <button class="all-tasks">All</button>
-            <button class="active-tasks">Active</button>
-            <button class="completed-tasks">Completed</button>
-            <button class="clear-tasks">Clear completed</button>
-        </div>
-    </div>
+	<div class="todo-main" id="app-form">
+		<h2>Todo.App<i class="fa-sharp fa-solid fa-list-check"></i></h2>
+		<div class="row">
+			<input type="text" id="input-box" placeholder="Type your task here..." />
+			<button class="add-task" id="add-button">add</button>
+		</div>
+		<ul id="list-container">
+			<template id="task-template">
+				<li>
+					<input type="checkbox" id="task-circle" />
+					<span id="task-name"></span>
+					<i class="fa-solid fa-trash remove-icon" onclick="remove(id)"></i>
+				</li>
+			</template>
+		</ul>
+		<div class="status-buttons">
+			<button class="all-tasks">All</button>
+			<button class="active-tasks">Active</button>
+			<button class="completed-tasks">Completed</button>
+			<button class="clear-tasks">Clear completed</button>
+		</div>
+	</div>
 </div>
 
 <body>
-    <script src="./app.js"></script>
+	<script src="./app.js"></script>
 </body>
 
 </html>
